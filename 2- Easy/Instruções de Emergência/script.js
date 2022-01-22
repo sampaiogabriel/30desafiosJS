@@ -10,11 +10,10 @@ function verifyLettersEquals(params) {
     const charCount = {};
 
     for (let i = 0; i < params.length; i++) {
-        const element = params[i];
-
+        charCount[params[i]] = charCount[params[i]] ? charCount[params[i]] + 1 : 1;
     }
 
-
+    return Object.values(charCount).every((count, index, array) => index !== 0 ? count === array[index - 1] : true);
 }
 
 console.log(verifyLettersEquals('This is Thee'));
@@ -24,3 +23,4 @@ console.log(verifyLettersEquals('ssd'));
 console.log(verifyLettersEquals('Lorem ipsum'));
 // false
 console.log(verifyLettersEquals('gaga'));
+// true
